@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart'; // Removed 'as http' and imported directly
 import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Fetch data from the API
   Future<List<Meal>> fetchMeals() async {
-    final response = await http.get(
+    final response = await get(
         Uri.parse('https://www.themealdb.com/api/json/v1/1/search.php?f=a'));
 
     if (response.statusCode == 200) {
@@ -132,7 +132,7 @@ class Meal {
   final String strMealThumb;
   final String strCategory;
   final String strArea;
-  final String strInstructions; // Added instructions to the model
+  final String strInstructions;
 
   Meal({
     required this.strMeal,
@@ -142,7 +142,7 @@ class Meal {
     required this.strInstructions,
   });
 
-  // Convert JSON into Meal object, including strInstructions
+  // A factory constructor to create a Meal object from JSON data
   factory Meal.fromJson(Map<String, dynamic> json) {
     return Meal(
       strMeal: json['strMeal'],
