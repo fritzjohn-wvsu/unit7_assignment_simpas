@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart'; // Removed 'as http' and imported directly
+import 'package:http/http.dart';
 import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -63,7 +63,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
           return Column(
             children: [
-              // Centered title
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Center(
@@ -81,10 +80,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (context, index) {
                     final meal = meals[index];
                     return Padding(
-                      padding: const EdgeInsets.only(
-                          bottom: 8.0), // Space between ExpansionTiles
+                      padding: const EdgeInsets.only(bottom: 8.0),
                       child: Container(
-                        color: Colors.grey[200], // Set background to gray
+                        color: Colors.grey[200],
                         child: ExpansionTile(
                           leading: Image.network(meal.strMealThumb,
                               width: 50, height: 50, fit: BoxFit.cover),
